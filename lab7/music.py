@@ -6,17 +6,17 @@ width = 400
 height = 600
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Music-player')
-icon = pygame.image.load('lab7\images\music-player.png')
+icon = pygame.image.load('lab7\music-player.png')
 pygame.display.set_icon(icon)
-cover = pygame.image.load('lab7/images/cover.png')
+cover = pygame.image.load('lab7\cover.png')
 new_cover = pygame.transform.scale(cover, (400, 500))
-player = pygame.image.load('lab7/images/player.png')
+player = pygame.image.load('lab7\player.png')
 new_player = pygame.transform.scale(player, (400, 100))
 
 music_sound = [
-    pygame.mixer.Sound('lab7/music/1.mp3'),
-    pygame.mixer.Sound('lab7/music/2.mp3'),
-    pygame.mixer.Sound('lab7/music/3.mp3')
+    pygame.mixer.Sound('lab7\m1.mp3'),
+    pygame.mixer.Sound('lab7\m2.mp3'),
+    pygame.mixer.Sound('lab7\m3.mp3')
 ]
 
 selected_sound_index = 0
@@ -32,9 +32,9 @@ while running:
             elif event.key == pygame.K_DOWN:
                 music_sound[selected_sound_index].stop()
             elif event.key == pygame.K_LEFT:
-                selected_sound_index = (selected_sound_index - 1) % len(music_sound)
+                selected_sound_index = (selected_sound_index - 1) % 3
             elif event.key == pygame.K_RIGHT:
-                selected_sound_index = (selected_sound_index + 1) % len(music_sound)
+                selected_sound_index = (selected_sound_index + 1) % 3
 
     screen.blit(new_cover, (0, 0))
     screen.blit(new_player, (0, 500))

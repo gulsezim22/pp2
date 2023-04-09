@@ -9,9 +9,9 @@ white = (255, 255, 255)
 sc = pygame.display.set_mode((width, height)) 
  
  
-mickey = pygame.image.load("lab7\images\main-clock.png") 
-leftHand = pygame.image.load("lab7\images\left-hand.png") 
-rightHand = pygame.image.load("lab7/images/right-hand.png")
+mickey = pygame.image.load("lab7\main-clock.png") 
+leftHand = pygame.image.load("lab7\left-hand.png") 
+rightHand = pygame.image.load("lab7\hand1.png")
 mickeyRect = mickey.get_rect() 
  
 def blitRotateCenter(surf, image, center, angle): 
@@ -24,17 +24,16 @@ second = 78 - current_datetime.second*6
 minute = 78 - current_datetime.minute*6
  
 while True: 
- for event in pygame.event.get(): 
-  if event.type == pygame.QUIT: 
-    exit() 
+  for event in pygame.event.get(): 
+    if event.type == pygame.QUIT: 
+      exit() 
+  second -= 0.099
+  minute -= 0.00165
  
- second -= 0.099
- minute -= 0.00165
+  sc.fill(white) 
+  sc.blit(mickey, (x, y)) 
+  sc.blit(mickey, mickeyRect) 
  
- sc.fill(white) 
- sc.blit(mickey, (x, y)) 
- sc.blit(mickey, mickeyRect) 
- 
- blitRotateCenter(sc, leftHand, (x,y), second) 
- blitRotateCenter(sc, rightHand, (x,y), minute) 
- pygame.display.update()
+  blitRotateCenter(sc, leftHand, (x,y), second) 
+  blitRotateCenter(sc, rightHand, (x,y), minute) 
+  pygame.display.update()
